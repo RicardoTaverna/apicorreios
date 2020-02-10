@@ -20,10 +20,13 @@ def cliente(request):
         response = requests.get(url)
         cep = response.json()
 
-    form = ClienteForm(request.POST)
-    if form.is_valid():
-        form.save()
-        return redirect('show/')     
+    if request.method == "POST":
+        form = ClienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/show')     
+    else:
+        form = ClienteForm()
     context = {
         'cep': cep,
         'form':form

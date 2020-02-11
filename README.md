@@ -1,5 +1,5 @@
 # apicorreios
-======
+=
 ## Sequencia para utilizar
 
 Em seu ambiente virtual instalar os pacotes em 'requirements.tx'.
@@ -8,7 +8,7 @@ Por último, iniciar o servidor com python manage.py runserver'.
 
 Para acessar a página de administração, rodar o comando 'python manage.py createsuperuser'.
 
-======
+=
 ### Páginas
 
 127.0.0.1:8000 - página de cadastro e funcionamento da api

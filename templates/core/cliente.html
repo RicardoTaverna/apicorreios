@@ -1,5 +1,7 @@
 {% extends 'api/base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 <div class="container">
     <h3>Cadastro de Cliente</h3>
@@ -20,69 +22,40 @@
     </form>
 
     
-    <form method="POST" class="post-form" action="cliente">
-    {% csrf_token %}
-        <div class="container">
-            <div class="form-group row">
-                <label for="inputNome" class="col-sm-2 col-form-label">Nome</label>
-                <div class="col-sm-4" id="inputNome">
-                    {{ form.nome }}
-                </div>
-                
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-6">
+                {{ form.nome|as_crispy_field }}
             </div>
-
-            <div class="form-group row">
-                <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-4" id="inputEmail">
-                    {{ form.email }}
-                </div>
+            <div class="col-6">
+                {{ form.email|as_crispy_field }}
             </div>
-
-            {% if cep %}
-            <div class="form-group row">
-                <label for="inputCEP" class="col-sm-2 col-form-label">CEP</label>
-                <div class="col-sm-4" id="inputCEP">
-                    <input class="form-control" type="text" id="cep" name="cep" value="{{ cep.cep }}">
-                </div>
+            <div class="col-6">
+                {{ form.cep |as_crispy_field }}
             </div>
-            
-            <div class="form-group row">
-                <label for="inputRua" class="col-sm-2 col-form-label">Rua</label>
-                <div class="col-sm-4" id="inputRua">
-                    <input class="form-control" type="text" id="rua" name="rua" value="{{ cep.logradouro }}">
-                </div>
+            <div class="col-6">
+                {{ form.rua|as_crispy_field }}
             </div>
-
-            <div class="form-group row">
-                <label for="inputComplemento" class="col-sm-2 col-form-label">Complemento</label>
-                <div class="col-sm-4" id="inputRua">
-                    {{ form.complemento }}
-                </div>
+            <div class="col-6">
+                {{ form.complemento|as_crispy_field }}
             </div>
-
-            <div class="form-group row">
-                <label for="inputBairro" class="col-sm-2 col-form-label">Bairro</label>
-                <div class="col-sm-4" id="inputBairro">
-                    <input class="form-control" type="text" id="bairro" name="bairro" value="{{ cep.bairro }}">
-                </div>
+            <div class="col-6">
+                {{ form.bairro|as_crispy_field }}
             </div>
-
-            <div class="form-group row">
-                <label for="inputUF" class="col-sm-2 col-form-label">UF</label>
-                <div class="col-sm-4" id="inputUF">
-                    <input class="form-control" type="text" id="uf" name="uf" value="{{ cep.uf }}">
-                </div>
+            <div class="col-6">
+                {{ form.uf|as_crispy_field }}
             </div>
-            {% endif %}
-
-            <button type="submit" class="btn btn-primary">Enviar</button>
-
         </div>
-    
-    
+        
+        
+        <button type="submit" class="btn btn-success">Save person</button>
     </form>
 
-        
+    {% if cep %}
+    <p>{{ cep.cep }}</p>
+    <p>{{ cep.bairro }}</p>
+    {% endif %}
 
 </div>
 

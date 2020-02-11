@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from core.forms import ClienteForm
+from django.http import HttpResponse
+from core.forms import ClienteForm, testeClienteForm
 from core.models import Cliente
 import requests
 
@@ -24,12 +25,13 @@ def cliente(request):
         form = ClienteForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/show')     
-    else:
-        form = ClienteForm()
+            print('form validado')
+               
+    
+    form = ClienteForm()
     context = {
         'cep': cep,
-        'form':form
+        'form': form
     }
     return render(request,'core/cliente.html', context)
 

@@ -3,7 +3,7 @@ from django.db import models
 class Cliente(models.Model):
     nome = models.CharField(max_length=120)
     email = models.EmailField()
-    cep = models.IntegerField()
+    cep = models.CharField(max_length=20)
     rua = models.CharField(max_length=400)
     complemento = models.CharField(max_length=400)
     bairro = models.CharField(max_length=50)

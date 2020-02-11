@@ -32,7 +32,9 @@
                 {{ form.email|as_crispy_field }}
             </div>
             <div class="col-6">
-                {{ form.cep |as_crispy_field }}
+                {% if cep %}
+                {{ form.cep | as_crispy_field }}
+                {% endif %}
             </div>
             <div class="col-6">
                 {{ form.rua|as_crispy_field }}
@@ -49,7 +51,7 @@
         </div>
         
         
-        <button type="submit" class="btn btn-success">Save person</button>
+        <button type="submit" class="btn btn-success">Save</button>
     </form>
 
     {% if cep %}

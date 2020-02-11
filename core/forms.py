@@ -2,10 +2,14 @@ from django import forms
 from core.models import Cliente
 
 class ClienteForm(forms.ModelForm):
+    cep = forms.CharField(widget=forms.TextInput(attrs={'value': '{{ cep.cep }}' }))
+    email = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Email'}))
+    
     class Meta:
         model = Cliente
         fields = "__all__"
 
+    
 
 class testeClienteForm(forms.Form):
     email = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Email'}))
